@@ -9,7 +9,7 @@ This docker-compose file is about 95% complete for getting up and running right 
 
 1. Update the `WEBPASSWORD` environment variable - this is what you use to login to the PiHole web admin portal. _Optionally: comment it out to get a random password and fetch it from the container logs._
 2. Grab a copy of [example-dnscrypt-proxy.toml](https://github.com/DNSCrypt/dnscrypt-proxy/blob/master/dnscrypt-proxy/example-dnscrypt-proxy.toml), which is the config file to tell dnscrypt-proxy what servers to forward requests to. Rename it to `dnscrypt-proxy.toml` and place it in `/etc/dnscrypt` on the docker host.
-3. Uncomment the `server_names` setting and add/remove the servers you want. Use as many or as few as you want; I typically just use `cloudflare`.
+3. Edit `dnscrypt-proxy.toml` and uncomment the `server_names` setting and add/remove the servers you want. Use as many or as few as you want; I typically just use `cloudflare`.
 4. Issue `docker compose up` to deploy the containers
 5. If you have a firewall enabled (you should), allow incoming traffic on docker host ports `53, 80` to allow DNS requests and web admin portal traffic.
 6. Login in to your router and set your DNS server to the address of the docker host.
